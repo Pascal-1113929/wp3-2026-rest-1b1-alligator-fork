@@ -1,0 +1,26 @@
+services:
+    wp3-backend:
+        container_name: wp3-backend
+        image: wp3-backend:latest
+        env_file: .env
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        ports:
+            - "${backend_http_port:-5000}:${backend_http_port:-5000}"
+        restart: unless-stopped
+
+    wp3-frontend:
+        container_name: wp3-frontend
+        image: wp3-frontend:latest
+        env_file: .env
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+            args:
+                frontend_base_url: ${frontend_base_url}
+        ports:
+            - "${frontend_http_port:-8080}:${frontend_http_port:-8080}"
+        depends_on:
+            - wp3-backend
+        restart: unless-stopped

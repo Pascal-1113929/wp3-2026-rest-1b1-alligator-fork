@@ -1,0 +1,7 @@
+venv
+.env
+__pycache__
+.idea
+database.db
+private_key.pem
+public_key.pem

@@ -6,3 +6,4 @@ ua-parser[regex]==1.0.1
 cryptography==46.0.5
 pyjwt==2.12.1
 ollama==0.6.1
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
